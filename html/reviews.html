@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings & Reviews</title>
+    <link rel="stylesheet" href="../css/reviews.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="navBar">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">Restaurant</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" href="home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="register.html">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cart.html">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="menu.html">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="reviews.html">Reviews</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+
+<div class="reviews-container">
+    <h2>Ratings & Reviews</h2>
+
+    <!-- Add Review Form -->
+    <div class="review-form-box">
+        <h3>Write a Review</h3>
+        <div class="rating-input">
+            <label>Rating:</label>
+            <select id="rating-select">
+                <option value="5">5 Stars - Excellent</option>
+                <option value="4">4 Stars - Very Good</option>
+                <option value="3">3 Stars - Good</option>
+                <option value="2">2 Stars - Fair</option>
+                <option value="1">1 Star - Poor</option>
+            </select>
+        </div>
+        <div class="review-input">
+            <textarea id="review-text" placeholder="Write your review here..." rows="4"></textarea>
+        </div>
+        <button onclick="submitReview()" class="submit-btn">Submit Review</button>
+    </div>
+
+    <!-- Existing Reviews -->
+    <div class="reviews-list">
+        <h3>Customer Reviews</h3>
+        
+        <div class="review-item">
+            <div class="review-header">
+                <strong>John Doe</strong>
+                <span class="rating-stars">★★★★★</span>
+            </div>
+            <p class="review-text">Great food and excellent service! Will definitely come back again.</p>
+            <span class="review-date">March 15, 2024</span>
+        </div>
+
+        <div class="review-item">
+            <div class="review-header">
+                <strong>Sarah Smith</strong>
+                <span class="rating-stars">★★★★☆</span>
+            </div>
+            <p class="review-text">Good quality food, but the wait time was a bit long. Overall satisfied.</p>
+            <span class="review-date">March 12, 2024</span>
+        </div>
+
+        <div class="review-item">
+            <div class="review-header">
+                <strong>Mike Johnson</strong>
+                <span class="rating-stars">★★★★★</span>
+            </div>
+            <p class="review-text">Amazing experience! The food was delicious and the staff was very friendly.</p>
+            <span class="review-date">March 10, 2024</span>
+        </div>
+
+        <div class="review-item">
+            <div class="review-header">
+                <strong>Emily Brown</strong>
+                <span class="rating-stars">★★★☆☆</span>
+            </div>
+            <p class="review-text">Food was okay, nothing special. Prices are reasonable though.</p>
+            <span class="review-date">March 8, 2024</span>
+        </div>
+    </div>
+</div>
+
+<script>
+function submitReview() {
+    const rating = document.getElementById('rating-select').value;
+    const reviewText = document.getElementById('review-text').value;
+    
+    if (!reviewText.trim()) {
+        alert('Please write a review before submitting.');
+        return;
+    }
+    
+    // Create new review element
+    const reviewsList = document.querySelector('.reviews-list');
+    const newReview = document.createElement('div');
+    newReview.className = 'review-item';
+    
+    const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    
+    newReview.innerHTML = `
+        <div class="review-header">
+            <strong>You</strong>
+            <span class="rating-stars">${stars}</span>
+        </div>
+        <p class="review-text">${reviewText}</p>
+        <span class="review-date">${today}</span>
+    `;
+    
+    // Insert at the top of reviews list
+    reviewsList.insertBefore(newReview, reviewsList.querySelector('.review-item'));
+    
+    // Clear form
+    document.getElementById('review-text').value = '';
+    document.getElementById('rating-select').value = '5';
+    
+    alert('Thank you for your review!');
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="../css/checkout.css" />
+</head>
+<body>
+    <div class="checkout-box">
+        <h2>Checkout</h2>
+
+        <input type="text" id="checkout-name" placeholder="Full Name" />
+        <input type="email" id="checkout-email" placeholder="Email Address" />
+        <input type="text" id="checkout-card" placeholder="Card Number" />
+        <input type="text" id="checkout-expiry" placeholder="Expiry Date (MM/YY)" />
+        <input type="text" id="checkout-cvv" placeholder="CVV" />
+
+        <button class="pay-btn" onclick="processCheckout()">Pay Now</button>
+    </div>
+
+    <script>
+        function processCheckout() {
+            // Get form values
+            const name = document.getElementById('checkout-name').value.trim();
+            const email = document.getElementById('checkout-email').value.trim();
+            const card = document.getElementById('checkout-card').value.trim();
+            const expiry = document.getElementById('checkout-expiry').value.trim();
+            const cvv = document.getElementById('checkout-cvv').value.trim();
+            
+            // Simple validation
+            if (name === '' || email === '' || card === '' || expiry === '' || cvv === '') {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Store order info in sessionStorage to pass to tracking page
+            sessionStorage.setItem('orderPlaced', 'true');
+            sessionStorage.setItem('orderTime', new Date().toISOString());
+            
+            // Redirect to order tracking page
+            alert('Payment successful! Redirecting to order tracking...');
+            window.location.href = 'order_tracking.html';
+        }
+    </script>
+</body>
+</html>
