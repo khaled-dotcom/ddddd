@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking</title>
+    <link rel="stylesheet" href="../css/order-tracking.css">
+</head>
+<body>
+
+    <div class="tracking-box">
+        <h2>Order Tracking</h2>
+        <p id="order-info" style="text-align: center; margin-bottom: 20px; color: #666;"></p>
+
+        <div class="status-step" id="status-placed">
+            <h3>Order Placed</h3>
+        </div>
+
+        <div class="status-step" id="status-confirmed">
+            <h3>Order Confirmed</h3>
+        </div>
+
+        <div class="status-step" id="status-delivery">
+            <h3>Out for Delivery</h3>
+        </div>
+
+        <div class="status-step" id="status-delivered">
+            <h3>Delivered</h3>
+        </div>
+
+    </div>
+
+    <script>
+        // Check if order was just placed
+        const orderPlaced = sessionStorage.getItem('orderPlaced');
+        
+        if (orderPlaced === 'true') {
+            // Start tracking process
+            startOrderTracking();
+            // Clear the flag
+            sessionStorage.removeItem('orderPlaced');
+        } else {
+            // If no order, show initial state
+            document.getElementById('status-placed').classList.add('active');
+        }
+        
+        function startOrderTracking() {
+            // Set initial status - Order Placed
+            document.getElementById('status-placed').classList.add('active');
+            updateOrderInfo('Order placed successfully!');
+            
+            // After 3 seconds, move to Order Confirmed
+            setTimeout(function() {
+                document.getElementById('status-placed').classList.remove('active');
+                document.getElementById('status-confirmed').classList.add('active');
+                updateOrderInfo('Order confirmed by restaurant!');
+            }, 3000);
+            
+            // After 6 seconds, move to Out for Delivery
+            setTimeout(function() {
+                document.getElementById('status-confirmed').classList.remove('active');
+                document.getElementById('status-delivery').classList.add('active');
+                updateOrderInfo('Your order is out for delivery!');
+            }, 6000);
+            
+            // After 9 seconds, move to Delivered
+            setTimeout(function() {
+                document.getElementById('status-delivery').classList.remove('active');
+                document.getElementById('status-delivered').classList.add('active');
+                updateOrderInfo('Order delivered successfully! Thank you for your order.');
+            }, 9000);
+        }
+        
+        function updateOrderInfo(message) {
+            const orderInfo = document.getElementById('order-info');
+            orderInfo.textContent = message;
+            orderInfo.style.fontWeight = 'bold';
+        }
+    </script>
+
+</body>
+</html>
