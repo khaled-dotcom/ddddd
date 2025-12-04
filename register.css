@@ -1,0 +1,57 @@
+body {
+  font-family: Arial;
+  background: lightgray;
+  background-image: url(../images/backgroungImage.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* register box */
+.register-box {
+  width: 400px;
+  margin: 60px auto;
+  padding: 25px;
+  background: white;
+  border: 1px solid gray;
+  border-radius: 8px;
+}
+
+.register-box h2 {
+  text-align: center;
+}
+
+.register-box .input-box {
+  margin-bottom: 10px;
+}
+
+.register-box .input-box input {
+  margin-top: 0;
+}
+
+.register-box input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
