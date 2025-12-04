@@ -1,0 +1,35 @@
+body {
+  font-family: Arial;
+  background: lightgray;
+  background-image: url(../images/backgroungImage.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.dashboard {
+  width: 90%;
+  margin: auto;
+}
+
+.order-card {
+  background: white;
+  padding: 15px;
+  margin-top: 15px;
+  border: 1px solid gray;  
+  border-radius: 10px;
+}
+
+.order-card span {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.complete-btn {
+  padding: 8px 12px;
+  background: green;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}

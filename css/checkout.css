@@ -1,0 +1,37 @@
+body {
+  font-family: Arial;
+  background-color: white;
+  background-image: url(../images/backgroungImage.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+ .checkout-box {
+  width: 400px;
+  margin: 50px auto;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ddd;    
+  border-radius: 10px;
+}
+
+ .checkout-box input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  border: 1px solid #ddd;    
+  border-radius: 6px;
+}
+
+ .pay-btn {
+  margin-top: 15px;
+  width: 100%;
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;          
+}
+
